@@ -1,0 +1,27 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form action="./select/" method="POST" onsubmit="return checkFrom();">{% csrf_token %}
+            <select name="part" id="select-part" style="width:100px; text-align-last: center;">
+                <option value="3">PartⅠ3</option>
+                <option value="4">PartⅠ4</option>
+                <option value="5">PartⅠ5</option>
+                <option value="4">PartⅠ6</option>
+                <option value="7">PartⅠ7</option>
+                <option value="8">PartⅠ8</option>
+            </select>
+            <select name="lng" id="select-lng" style="width:100px; text-align-last: center;">
+                <option value="ENLISH">영어</option>
+                <option value="KOREAN">한국어</option>
+            </select>
+            <select name="type" id="select-type" style="width:100px; text-align-last: center;">
+                <option value="objective">객관식</option>
+                <option value="subjective">주관식</option>
+            </select>
+            <button >Enter</button> <br><br>
+            <h3>{{ question }}</h3>
+        </form>
+    </body>
+</html>
