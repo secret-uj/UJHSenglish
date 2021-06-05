@@ -1,8 +1,24 @@
 <html>
     <head>
-
+        <script>
+            var e='false';
+            function init(){
+                document.getElementById("input-answer").focus();
+                console.log(e)
+                if (e=='true'){
+                    var t = "{{T}}";
+                    if (t=="True"){
+                        alert("success");
+                    }
+                    else{
+                        alert("failure");
+                    }
+                    e='false';
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body onload="init();">
         <form action="./select/" method="POST" onsubmit="return checkFrom();">{% csrf_token %}
             <select name="part" id="select-part" style="width:100px; text-align-last: center;">
                 <option value="3">PartⅠ3</option>
@@ -21,7 +37,11 @@
                 <option value="subjective">주관식</option>
             </select>
             <button >Enter</button> <br><br>
-            <h3>{{ question }}</h3>
         </form>
+        <h3>{{ question }}</h3>
+        <form action="./input/" method="POST"  onsubmit="e='true';">{% csrf_token %}
+            <input type="text" name="answer" id="input-answer" autocomplete='off' size="10">
+        </form>
+        <h3>{{ T }}</h3>
     </body>
 </html>
