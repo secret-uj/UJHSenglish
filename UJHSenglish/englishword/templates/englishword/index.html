@@ -2,12 +2,10 @@
     <head>
         <script>
             function init(){
-                if ("{{request}}" == "select"){
-                    document.getElementById("part_"+"{{part}}").selected = true;
-                    document.getElementById("lng_"+"{{lng}}").selected = true;
-                    document.getElementById("type_"+"{{type}}").selected = true;
+                document.getElementById("part_"+"{{part}}").selected = true;
+                document.getElementById("lng_"+"{{lng}}").selected = true;
+                document.getElementById("type_"+"{{type}}").selected = true;
 
-                }
 
                 document.getElementById("input-answer").focus();
 
