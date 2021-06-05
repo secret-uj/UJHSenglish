@@ -2,43 +2,59 @@
     <head>
         <script>
             function init(){
+                if ("{{request}}" == "select"){
+                    document.getElementById("part_"+"{{part}}").selected = true;
+                    document.getElementById("lng_"+"{{lng}}").selected = true;
+                    document.getElementById("type_"+"{{type}}").selected = true;
+
+                }
+
                 document.getElementById("input-answer").focus();
-                var t = "{{trueorfalse}}";
-                var e = "{{estimation}}";
-                if (e=="True"){
-                    if (t=="True"){
+
+                if ("{{request}}" == "input"){
+                    if ("{{trueorfalse}}"=="True"){
                         alert("success");
                     }
                     else{
                         alert("failure");
                     }
                 }
-                    
+
+                if ("{{request}}" == "skip"){
+                    alert("{{skip_message}}");
+                }
+                
+                if ("{{request}}" == "hint"){
+                    document.getElementById("input-answer").placeholder="{{hint}}";
+                }
+                if ("{{state}}" == "complete"){
+                    alert("{{ score }}");
+                }
             }
         </script>
     </head>
     <body onload="init();">
         <form action="./select/" method="POST" onsubmit="e='false';">{% csrf_token %}
-            <select name="part" id="select-part" style="width:100px; text-align-last: center;">
-                <option value="3">PartⅠ03</option>
-                <option value="4">PartⅠ04</option>
-                <option value="5">PartⅠ05</option>
-                <option value="4">PartⅠ06</option>
-                <option value="7">PartⅠ07</option>
-                <option value="8">PartⅠ08</option>
-                <option value="9">PartⅠ09</option>
-                <option value="10">PartⅠ10</option>
-                <option value="11">PartⅠ11</option>
-                <option value="12">PartⅠ12</option>
+            <select name="part" id="select-part" style="width:100px; text-align-last: center;" selected="&{sel_part};">
+                <option id="part_3" value="3">PartⅠ03</option>
+                <option id="part_4" value="4">PartⅠ04</option>
+                <option id="part_5" value="5">PartⅠ05</option>
+                <option id="part_6" value="6">PartⅠ06</option>
+                <option id="part_7" value="7" disabled>PartⅠ07</option>
+                <option id="part_8" value="8">PartⅠ08</option>
+                <option id="part_9" value="9">PartⅠ09</option>
+                <option id="part_10" value="10">PartⅠ10</option>
+                <option id="part_11" value="11">PartⅠ11</option>
+                <option id="part_12" value="12">PartⅠ12</option>
             </select>
             <select name="lng" id="select-lng" style="width:100px; text-align-last: center;">
-                <option value="ENLISH">영어</option>
-                <option value="KOREAN" disabled>한국어</option>
+                <option id="lng_ENGLISH" value="ENGLISH">영어</option>
+                <option id="lng_KOREAN" value="KOREAN" disabled>한국어</option>
             </select>
             <select name="type" id="select-type" style="width:100px; text-align-last: center;">
-                <option value="objective" disabled>객관식</option>
-                <option value="subjective">주관식</option>
-                <option value="sentence">문장</option>
+                <option id="type_objective" value="objective" disabled>객관식</option>
+                <option id="type_subjective" value="subjective">주관식</option>
+                <option id="type_sentence" value="sentence">문장</option>
             </select>
             <button >Enter</button> <br><br>
         </form>
@@ -48,6 +64,9 @@
         </form>
         <form action="./skip/" method="POST" style="display:inline;"> {% csrf_token %}
             <button name="skip" style="display:inline-block;">SKIP</button>
+        </form>
+        <form action="./hint/" method="POST" style="display:inline;"> {% csrf_token %}
+            <button name="hint" style="display:inline-block;">HINT</button>
         </form>
         {% if state == "complete" %}
         <div>
