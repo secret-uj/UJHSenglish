@@ -1,39 +1,42 @@
 <html>
     <head>
         <script>
-            var e='false';
             function init(){
                 document.getElementById("input-answer").focus();
-                console.log(e)
-                if (e=='true'){
-                    var t = "{{T}}";
+                var t = "{{T}}";
+                var e = "{{E}}";
+                if (e=="True"){
                     if (t=="True"){
                         alert("success");
                     }
                     else{
                         alert("failure");
                     }
-                    e='false';
                 }
+                    
             }
         </script>
     </head>
     <body onload="init();">
-        <form action="./select/" method="POST" onsubmit="return checkFrom();">{% csrf_token %}
+        <form action="./select/" method="POST" onsubmit="e='false';">{% csrf_token %}
             <select name="part" id="select-part" style="width:100px; text-align-last: center;">
-                <option value="3">PartⅠ3</option>
-                <option value="4">PartⅠ4</option>
-                <option value="5">PartⅠ5</option>
-                <option value="4">PartⅠ6</option>
-                <option value="7">PartⅠ7</option>
-                <option value="8">PartⅠ8</option>
+                <option value="3">PartⅠ03</option>
+                <option value="4">PartⅠ04</option>
+                <option value="5">PartⅠ05</option>
+                <option value="4">PartⅠ06</option>
+                <option value="7">PartⅠ07</option>
+                <option value="8">PartⅠ08</option>
+                <option value="9">PartⅠ09</option>
+                <option value="10">PartⅠ10</option>
+                <option value="11">PartⅠ11</option>
+                <option value="12">PartⅠ12</option>
             </select>
             <select name="lng" id="select-lng" style="width:100px; text-align-last: center;">
                 <option value="ENLISH">영어</option>
-                <option value="KOREAN">한국어</option>
+                <!--<option value="KOREAN">한국어</option>-->
             </select>
             <select name="type" id="select-type" style="width:100px; text-align-last: center;">
-                <option value="objective">객관식</option>
+                <!--<option value="objective">객관식</option>-->
                 <option value="subjective">주관식</option>
             </select>
             <button >Enter</button> <br><br>

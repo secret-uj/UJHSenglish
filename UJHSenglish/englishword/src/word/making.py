@@ -151,6 +151,6 @@ def Making(Pt):
                     k1.append(k3)
                     t-=1
                 t+=1
-                random.shuffle(K)
-                return K, K_E
+    random.shuffle(K)
+    return K, K_E
 
