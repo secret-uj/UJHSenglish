@@ -1,47 +1,55 @@
-import random
-import englishword.src.word.Part as Part
+import random, os
 
 def Making(Pt):
     K=list()
     E=list()
-    f=Part.part(int(Pt))
-    for k in range(0,len(f),2):
-        F=f[k]
-        i=0
+    init_path=os.path.dirname(__file__)
+    if int(Pt)<10:
+        src="PartⅠ 0"+Pt+".txt"
+    else:
+        src="PartⅠ "+Pt+".txt"
+    path = os.path.join(init_path, src)
+    with open(path, 'r', encoding='UTF8') as f:
         while True:
-            if i+4>len(F):
+            F=f.readline()
+            if F==str():
                 break
-            elif F[i]=='[':
-                if F[i:i+7] in ["[명][동] ", "[명][형] ", "[형][부] ", "[부][형] ", "[전][접] "]:
-                    F1,F2=F.split(F[i:i+7])
-                    if i!=0:
-                        F=F1[:-1]+"; "+F2
-                        i-=1
-                    else:
+            else:
+                i=0
+                while True:
+                    if i+4>len(F):
+                        break
+                    elif F[i]=='[':
+                        if F[i:i+7] in ["[명][동] ", "[명][형] ", "[형][부] ", "[부][형] ", "[전][접] "]:
+                            F1,F2=F.split(F[i:i+7])
+                            if i!=0:
+                                F=F1[:-1]+"; "+F2
+                                i-=1
+                            else:
+                                F=F1+F2
+                                i-=6
+                        elif F[i:i+4] in ["[명] ","[형] ","[동] ","[부] ","[전] "]:
+                            F1,F2=F.split(F[i:i+4])
+                            if i!=0:
+                                F=F1[:-1]+"; "+F2
+                                i-=1
+                            else:
+                                F=F1+F2
+                                i-=3
+                    elif F[i]=='《':
+                        i1=i
+                    elif F[i]=='》':
+                        F1=F[:i1]
+                        F2=F[i+2:]
                         F=F1+F2
-                        i-=6
-                elif F[i:i+4] in ["[명] ","[형] ","[동] ","[부] ","[전] "]:
-                    F1,F2=F.split(F[i:i+4])
-                    if i!=0:
-                        F=F1[:-1]+"; "+F2
-                        i-=1
-                    else:
-                        F=F1+F2
-                        i-=3
-            elif F[i]=='《':
-                i1=i
-            elif F[i]=='》':
-                F1=F[:i1]
-                F2=F[i+2:]
-                F=F1+F2
-                i-=i-i1+1
-            i+=1
-        K.append(F)
-        F=f[k+1]
-        if F in E and K[E.index(F)]==K[-1]:
-            K.pop(-1)
-        else:
-            E.append(F)
+                        i-=i-i1+1
+                    i+=1
+                K.append(F[:-1])
+                F=f.readline()
+                if F in E and K[E.index(F)]==K[-1]:
+                    K.pop(-1)
+                else:
+                    E.append(F[:-1])
     n=len(K)
     K_E=dict()
     S=dict()

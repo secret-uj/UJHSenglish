@@ -3,8 +3,8 @@
         <script>
             function init(){
                 document.getElementById("input-answer").focus();
-                var t = "{{T}}";
-                var e = "{{E}}";
+                var t = "{{trueorfalse}}";
+                var e = "{{estimation}}";
                 if (e=="True"){
                     if (t=="True"){
                         alert("success");
@@ -33,18 +33,26 @@
             </select>
             <select name="lng" id="select-lng" style="width:100px; text-align-last: center;">
                 <option value="ENLISH">영어</option>
-                <!--<option value="KOREAN">한국어</option>-->
+                <option value="KOREAN" disabled>한국어</option>
             </select>
             <select name="type" id="select-type" style="width:100px; text-align-last: center;">
-                <!--<option value="objective">객관식</option>-->
+                <option value="objective" disabled>객관식</option>
                 <option value="subjective">주관식</option>
+                <option value="sentence">문장</option>
             </select>
             <button >Enter</button> <br><br>
         </form>
         <h3>{{ question }}</h3>
-        <form action="./input/" method="POST"  onsubmit="e='true';">{% csrf_token %}
-            <input type="text" name="answer" id="input-answer" autocomplete='off' size="10">
+        <form action="./input/" method="POST"  onsubmit="e='true';" style="display:inline-block;">{% csrf_token %}
+            <input type="text" name="answer" id="input-answer" autocomplete='off' size="30" style="display:inline-block;">
         </form>
-        <h3>{{ T }}</h3>
+        <form action="./skip/" method="POST" style="display:inline;"> {% csrf_token %}
+            <button name="skip" style="display:inline-block;">SKIP</button>
+        </form>
+        {% if state == "complete" %}
+        <div>
+            {{ score }}
+        </div>
+        {% endif %}
     </body>
 </html>
