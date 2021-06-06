@@ -22,8 +22,6 @@ expertise
 perspective
 잠재적인; 잠재력
 potential
-(구분되는) 학문 영역
-academic silo
 지역, 동네
 neighborhood
 어느 모로 보나
@@ -44,10 +42,6 @@ snowball
 cleanup
 거행되다, 개최되다
 take place
-키부츠(이스라엘의 생활 공동체)
-kibbutz
-협동조합
-co-op
 분명한, 명백한
 obvious
 (예술적) 감성[감수성]
@@ -60,8 +54,6 @@ informative
 accompany
 명시하다
 specify
-진부한
-trite
 말살하다, 죽이다
 destroy
 (어리석음 따위가) 어처구니없는, 대단한
@@ -86,10 +78,6 @@ spin
 aquatic
 영장류
 primate
-이득
-lucre
-(배의) 선체
-hull
 도가 지나치게
 obsessively
 하드웨어, 장비
@@ -116,10 +104,6 @@ path
 fashionable
 분리하다, 연결을 끊다
 disconnect
-단념
-renouncement
-삼가다
-refrain
 ~의 특징을 이루다
 characterize
 격렬한, 심한
@@ -156,10 +140,6 @@ advance
 experimental philosophy
 (천막 따위를) 걷어치우다, 제거하다
 lift
-반발
-revolt
-꾸밈이 없는
-unadorned
 종
 species
 재생하다
@@ -186,10 +166,6 @@ inseparable
 either-or
 문제
 proposition
-복원하다
-reinstate
-내쫓다
-oust
 원칙, 원리
 principle
 광고 문안
@@ -208,7 +184,3 @@ tremendous
 temptation
 과장하다
 exaggerate
-소화 불량인 사람
-dyspeptic
-다진 고기
-mincemeat

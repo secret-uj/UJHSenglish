@@ -16,8 +16,6 @@ take ~ too far
 assert itself
 ~을 희생하면서
 at the expense of
-만연한
-rampant
 유사하다, 필적하다
 parallel
 집중시키다
@@ -180,10 +178,6 @@ static
 loop
 왜곡된, 기형의
 distorted
-빈민가
-ghetto
-고립된 장소
-enclave
 기반 시설
 infrastructure
 유대, 인연
@@ -262,10 +256,6 @@ transition
 feature
 투영하다
 project
-수렵 채집인
-forager
-크게 다가오다
-loom large
 타당한, 합리적인
 reasonable
 생각하다, 추정하다
@@ -306,10 +296,6 @@ in accordance with
 principle
 명쾌한
 elegant
-세속의, 비종교적인
-secular
-(성당) 참사회 회원
-canon
 끔찍한
 horrific
 ~에 오염된
@@ -342,9 +328,3 @@ spot
 the British Isles
 ~에 비해 과장된[지나친], ~과 균형이 안 맞는
 out of proportion to
-대변
-fecal matter
-(감정의) 복받침, 발작
-fit
-(만성적인) 병
-malady

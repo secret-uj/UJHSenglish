@@ -16,10 +16,6 @@ free-rider problem
 in the end
 실적, 성과
 performance
-분산, 확산
-diffusion
-게으름을 부리다
-slack off
 접촉
 contact
 본능
@@ -38,8 +34,6 @@ helpless
 sustain
 일, 사건
 occurrence
-감금된
-captive
 말할 필요도 없이
 needless to say
 분명하게 하다
@@ -116,10 +110,6 @@ sacrifice
 maximize
 군체, 집단
 colony
-자절(일부 동물이 위기를 벗어나기 위해 몸의 일부를 스스로 끊는 일)
-autotomy
-자기 몸의 일부를 떼어 내다
-self-eviscerate
 겉모습, 윤곽, 특성
 profile
 화난, 성 잘 내는
@@ -134,10 +124,6 @@ complexity
 enrich
 건강 수명
 healthspan
-짜증을 내는, 까다로운
-cranky
-가슴에 사무치는
-poignant
 사회 기반 시설
 infrastructure
 비참한
@@ -162,10 +148,6 @@ migrant
 compel ~ to do
 대규모의
 massive
-퇴거
-eviction
-쫓아내다
-hound
 중립성
 neutrality
 ~을 제쳐 두다
@@ -198,10 +180,6 @@ agenda
 investigator
 의무가 있는
 obligated
-왜곡하다
-skew
-동조하다
-align
 고립, 격리
 isolation
 생겨나다, 드러나다

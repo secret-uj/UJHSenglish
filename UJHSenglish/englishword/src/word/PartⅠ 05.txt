@@ -50,10 +50,6 @@ distracted
 well-organized
 긍정적으로, 분명하게
 positively
-만일의 사태
-eventuality
-어길 수 없는
-inviolate
 유치한, 바보 같은
 silly
 불운한 일, 불행
@@ -100,7 +96,3 @@ clockwork
 astronomical
 모의실험 장치
 simulator
-출처가 의심스러운
-apocryphal
-수도원의
-monastic

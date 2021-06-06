@@ -24,8 +24,6 @@ script
 establish
 직면하게 하다, 대면시키다
 confront
-철자법, 맞춤법
-orthography
 현장 학습
 field trip
 침엽
@@ -54,10 +52,6 @@ quality
 cedar
 ~에 대해 언급하다
 bring up
-꺼끌꺼끌한
-prickly
-테레빈유(특히 페인트를 희석하는데 사용함)
-turpentine
 점검, 검사, 조사
 inspection
 본질적으로, 본질에 있어서
@@ -72,8 +66,6 @@ act upon
 reveal
 다층적인
 multilayered
-(돈·시간·에너지를) 들이다[쏟다]
-expend
 ~에게 정의의 벌을 내리다
 visit justice upon
 더 잘사는
@@ -96,8 +88,6 @@ valid
 day in court
 처벌을 면하다, ~을 모면하다
 get off
-권력이 과학기술 전문가에게 집중되는
-technocratic
 오염, 더러움
 contamination
 경로

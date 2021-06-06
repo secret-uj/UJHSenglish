@@ -3,10 +3,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from englishword.src.word.making import Making as Word_Making
 from englishword.src.sentence.making import Making as Sentence_Making
+import os, json
 
 # Create your views here.
 pt=str()
-tp=str()
+tp=list()
 Question=str()
 Answer=str()
 K=None
@@ -19,6 +20,7 @@ Content={
     'part': int(),
     'lng': str(),
     'type': str(),
+    'type_ans': str(),
     'question': None,
     'trueorfalse': None,
     'estimation': "False",
@@ -29,40 +31,58 @@ Content={
     }
 def Select_Q_A():
     global Content, Question, Answer, K, K_E, Score, pt, tp
-    if tp=="subjective":
-        Question=K[0]
-        Answer=K_E[K[0]]
-    elif tp=="sentence":
-        while True:
-            (Question, Answer) = Sentence_Making(pt, K_E[K[0]])
-            if Question!=None:
-                Content['hint']=Answer[0]
-                break
-            else:
-                print(K_E[K[0]])
-                del K[0]
-                Score[1]-=1
-                if K==list():
-                    Content['state']="complete"
-                    Content['score']="%d 중 %d 정답 " % (Score[1], Score[0])
+    if tp[0]=="word":
+        if tp[1]=="subjective":
+            Question=K[0]
+            Answer=K_E[K[0]]
+    elif tp[0]=="sentence":
+        if tp[1]=="subjective":
+            while True:
+                (Question, Answer) = Sentence_Making(pt, K_E[K[0]])
+                if Question!=None:
+                    Content['hint']=Answer[0]
                     break
+                else:
+                    print(K_E[K[0]])
+                    del K[0]
+                    Score[1]-=1
+                    if K==list():
+                        Content['state']="complete"
+                        Content['score']="%d 중 %d 정답 " % (Score[1], Score[0])
+                        break
 
 
 def index(request):
     global K, K_E, T, E, Score, Content
     content=dict(Content)
+    print(content)
     Content['request']=str()
+    Content['message']=str()
     return render(request, 'englishword/index.html', content)
 
 def select(request):
     global Question, Answer, K, K_E, Score, Content,pt,tp
     Content['request']='select'
+    Content['hint']=str()
     pt = request.POST['part']
     Content['part']=pt
     ln = request.POST['lng']
     Content['lng']=ln
-    tp = request.POST['type']
-    Content['type']=tp
+    tp = [request.POST['type'], request.POST['type_ans']]
+    Content['type']=tp[0]
+    Content['type_ans']=tp[1]
+    if tp[0] == "sentence":
+        if tp[1] == "subjective":
+            init_path=os.path.dirname(__file__)
+            if int(pt)<10:
+                src="PartⅠ 0"+pt+" 해석.docx"
+            else:
+                src="PartⅠ "+pt+" 해석.docx"
+            file = os.path.join(init_path,'src','sentence', src)
+            print("babo",file)
+            if os.path.isfile(file) == False:
+                Content['message']="아직 업로드되지 않았습니다."
+                return HttpResponseRedirect(reverse('index'))
     (K,K_E)=Word_Making(pt)
     Score=[0,len(K)]
     Content['state']="test"

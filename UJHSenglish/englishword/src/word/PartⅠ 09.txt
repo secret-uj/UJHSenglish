@@ -36,10 +36,6 @@ dominate
 adherence
 (언어의) 이형태, 변형
 variety
-체제
-regime
-밀접하게 관련시키다
-intertwine
 대학원생
 graduate student
 혁명
@@ -58,10 +54,6 @@ quote
 reinforce
 전체적인 상황
 big picture
-인용(문)
-citation
-고의가 아닌, 무심결의
-unintentional
 인사, 인사말
 greeting
 눈썹
@@ -144,10 +136,6 @@ establish
 a series of
 금지하는
 prohibitive
-일반적인
-prevalent
-정답게 속삭이다
-coo
 (기술·지능 등을) 최대한 발휘하다
 stretch
 미숙한, 경험이 없는
@@ -158,10 +146,6 @@ challenge
 take on
 ~을 추가하다, ~을 증축하다
 build on
-(탈것·식당 등의) 한가한 시간
-slack-time
-비는 시간, 일시적인 중단
-lull
 (무엇에 대한) 열광
 love affair
 상업
@@ -184,5 +168,3 @@ double as
 alley
 봉쇄하다, 막다
 seal
-창유리, 판유리
-glazing

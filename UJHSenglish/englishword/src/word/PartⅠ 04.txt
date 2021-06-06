@@ -30,12 +30,6 @@ inattention
 grant
 상호 간의
 mutual
-불행한 결말을 맞게 하다
-doom
-횡포, 폭정
-tyranny
-서서히 퍼지는
-insidious
 (기계 등을) 폐기하다
 retire
 사회[공공] 기반 시설
@@ -62,12 +56,6 @@ modest
 down the road
 맨 처음부터
 from scratch
-개보수하다
-retrofit
-회복력
-resilience
-선행 투자의
-upfront
 추정하다, 추측하다
 assume
 선율적인, 가락이 아름다운
@@ -118,12 +106,6 @@ evidence
 controversy
 칭하다, 명칭을 붙이다
 term
-발굴
-excavation
-더더구나
-a fortiori
-다의성
-equivocality
 진실성, 신뢰성
 credibility
 경영진, (대학) 본부
@@ -148,8 +130,6 @@ outstanding
 reputation
 ~하기로 선택하다
 opt to do
-힘겨운, 마음고생이 되는
-traumatic
 ~이라는 축복을 부여받다
 be blessed with
 지성
@@ -174,10 +154,6 @@ humbly
 in the sense that
 다루다
 tackle
-흡족해하다
-gloat
-위험
-pitfall
 상응하는 것, 대응하는 것
 equivalent
 설명하다, 이야기하다
@@ -196,8 +172,6 @@ validation
 testimony
 고고학
 archaeology
-전문, 전해 들은 말
-hearsay
 몹시 ~하고 싶은
 keen to do
 소수(의)

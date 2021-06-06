@@ -5,6 +5,7 @@
                 document.getElementById("part_"+"{{part}}").selected = true;
                 document.getElementById("lng_"+"{{lng}}").selected = true;
                 document.getElementById("type_"+"{{type}}").selected = true;
+                document.getElementById("type_ans_"+"{{type_ans}}").selected = true;
 
 
                 var ipt_a = document.getElementById("input-answer");
@@ -20,16 +21,13 @@
                     }
                 }
 
-                if ("{{request}}" == "left_len"){
-                    alert("{{message}}");
-                }
-
-                if ("{{request}}" == "skip"){
+                if ("{{message}}" != ""){
                     alert("{{message}}");
                 }
                 
                 if ("{{request}}" == "hint"){
                     document.getElementById("input-answer").placeholder="{{hint}}";
+                    alert("만녕");
                 }
                 if ("{{state}}" == "complete"){
                     alert("{{ score }}");
@@ -38,7 +36,7 @@
         </script>
     </head>
     <body onload="init();">
-        <form action="./select/" method="POST" onsubmit="e='false';">{% csrf_token %}
+        <form action="./select/" method="POST"> {% csrf_token %}
             <select name="part" id="select-part" style="width:100px; text-align-last: center;" selected="&{sel_part};">
                 <option id="part_3" value="3">PartⅠ03</option>
                 <option id="part_4" value="4">PartⅠ04</option>
@@ -57,9 +55,12 @@
                 <option id="lng_KOREAN" value="KOREAN" disabled>한국어</option>
             </select>
             <select name="type" id="select-type" style="width:100px; text-align-last: center;">
-                <option id="type_objective" value="objective" disabled>객관식</option>
-                <option id="type_subjective" value="subjective">주관식</option>
+                <option id="type_word" value="word">단어</option>
                 <option id="type_sentence" value="sentence">문장</option>
+            </select>
+            <select name="type_ans" id="select-typeans" style="width:100px; text-align-last: center;">
+                <option id="type_ans_objective" value="objective" disabled>객관식</option>
+                <option id="type_ans_subjective" value="subjective">주관식</option>
             </select>
             <button >Enter</button> <br><br>
         </form>

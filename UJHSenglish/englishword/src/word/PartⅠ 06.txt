@@ -30,8 +30,6 @@ refocus
 profound
 (판에 박힌) 일상
 routine
-몹시 바쁜
-hectic
 사적인 자유, 사생활, 혼자 있는 상태
 privacy
 자율성, 자주성
@@ -54,8 +52,6 @@ porch
 institution
 자족적인, 자립하는
 self-contained
-생활 편의 시설
-amenities
 플랫폼, 기반
 platform
 관용, 포용력
@@ -84,5 +80,3 @@ go hand in hand
 mirror
 확대하다
 magnify
-세계주의
-cosmopolitanism
