@@ -1,40 +1,128 @@
 <html>
     <head>
-        <script>
-            function init(){
-                document.getElementById("part_"+"{{part}}").selected = true;
-                document.getElementById("lng_"+"{{lng}}").selected = true;
-                document.getElementById("type_"+"{{type}}").selected = true;
-                document.getElementById("type_ans_"+"{{type_ans}}").selected = true;
-
-
-                var ipt_a = document.getElementById("input-answer");
-                ipt_a.focus();
-                ipt_a.placeholder="{{hint}}";
-
-                if ("{{request}}" == "input"){
-                    if ("{{trueorfalse}}"=="True"){
-                        alert("success");
+        <script type="text/javascript">
+            if ("{{message}}" != ""){
+                alert("{{message}}")
+            }
+            if ("{{request}}" != "true"){
+                var state='false';
+                var part;
+                var lng;
+                var type;
+                var type_ans;
+                var K;
+                var K_E;
+                var E_S;
+                var question;
+                var answer;
+            }
+            else{
+                state = 'true'
+                K = JSON.parse("{{K|escapejs}}");
+                K_E = JSON.parse("{{K_E|escapejs}}");
+                part = "{{part}}";
+                lng = "{{lng}}";
+                type = "{{type}}";
+                type_ans = "{{type_ans}}";
+                if (type=="sentence"){
+                    E_S = JSON.parse("{{E_S|escapejs}}");
+                }
+                var init_score=K.length;
+                var score=0;
+            }
+            
+            
+            function Init(){
+                if (state=='true'){
+                    console.log("hello");
+                    document.getElementById("select-part").value = part;
+                    document.getElementById("select-lng").value = lng;
+                    document.getElementById("select-type").value = type;
+                    document.getElementById("select-type_ans").value = type_ans;
+                    if (type=="word"){
+                        if (type_ans=="subjective"){
+                            question = K[0]
+                            answer = K_E[K[0]]
+                            document.getElementById("question").innerHTML=question;
+                        }
                     }
-                    else{
-                        alert("failure");
+                    else if (type=="sentence"){
+                        if (type_ans=="subjective"){
+                            question = E_S[K_E[K[0]]][1]+'<br>'+E_S[K_E[K[0]]][2]
+                            answer = E_S[K_E[K[0]]][0]
+                            document.getElementById("question").innerHTML=question;
+                        }
                     }
-                }
-
-                if ("{{message}}" != ""){
-                    alert("{{message}}");
-                }
-                
-                if ("{{request}}" == "hint"){
-                    document.getElementById("input-answer").placeholder="{{hint}}";
-                }
-                if ("{{state}}" == "complete"){
-                    alert("{{ score }}");
                 }
             }
+            function Question(){
+                K.shift();
+                if (K.length==0){
+                    return Complete()
+                }
+                else{
+                    if (type=="word"){
+                        if (type_ans=="subjective"){
+                            question = K[0]
+                            answer = K_E[K[0]]
+                            document.getElementById("question").innerHTML=question;
+                            document.getElementById("input-answer").value='';
+                            console.log(K_E[K[0]]);
+                        }
+                    }
+                    else if (type=="sentence"){
+                        if (type_ans=="subjective"){
+                            question = E_S[K_E[K[0]]][1]+'<br>'+E_S[K_E[K[0]]][2]
+                            answer = E_S[K_E[K[0]]][0]
+                            document.getElementById("question").innerHTML=question;
+                            document.getElementById("input-answer").value='';
+                            console.log(K_E[K[0]]);
+                        }
+                    }
+                }
+                
+            }
+            function Complete(){
+                alert(init_score+"개 중 "+score+"개 정답")
+                document.getElementById("question").innerHTML='';
+                document.getElementById("input-answer").value='';
+                state = 'false';
+            }
+            function Input(){
+                var ans = document.getElementById("input-answer").value;
+                if (ans == '') {
+                    alert(K.length+"개 남았습니다.")
+                }
+                else if (ans == 'S') {
+                    return Skip()
+                }
+                else if (ans == 'H') {
+                    return Hint()
+                }
+                else if (ans == answer){
+                    alert("success")
+                    score += 1
+                    return Question()
+                }
+                else{
+                    alert('failure');
+                    document.getElementById("input-answer").value='';
+                }
+            }
+            
+            function Skip(){
+                return Question()
+            }
+
+            function Hint(){
+                document.getElementById("input-answer").value=''
+                document.getElementById("input-answer").placeholder=
+                answer.substring(0,document.getElementById("input-answer").placeholder.length+1)
+            }
+
         </script>
     </head>
-    <body onload="init();">
+    <body onload="Init();">
         <form action="./select/" method="POST"> {% csrf_token %}
             <select name="part" id="select-part" style="width:100px; text-align-last: center;" selected="&{sel_part};">
                 <option id="part_3" value="3">PartⅠ03</option>
@@ -57,26 +145,18 @@
                 <option id="type_word" value="word">단어</option>
                 <option id="type_sentence" value="sentence">문장</option>
             </select>
-            <select name="type_ans" id="select-typeans" style="width:100px; text-align-last: center;">
+            <select name="type_ans" id="select-type_ans" style="width:100px; text-align-last: center;">
                 <option id="type_ans_objective" value="objective" disabled>객관식</option>
                 <option id="type_ans_subjective" value="subjective">주관식</option>
             </select>
-            <button >Enter</button> <br><br>
+            <button>Enter</button> <br><br>
         </form>
-        <h3>{{ question|linebreaks }}</h3>
-        <form action="./input/" method="POST"  onsubmit="e='true';" style="display:inline-block;">{% csrf_token %}
-            <input type="text" name="answer" id="input-answer" autocomplete='off' size="30" style="display:inline-block;">
-        </form>
-        <form action="./skip/" method="POST" style="display:inline;"> {% csrf_token %}
-            <button name="skip" style="display:inline-block;">SKIP</button>
-        </form>
-        <form action="./hint/" method="POST" style="display:inline;"> {% csrf_token %}
-            <button name="hint" style="display:inline-block;">HINT</button>
-        </form>
-        {% if state == "complete" %}
-        <div>
-            {{ score }}
-        </div>
-        {% endif %}
+        <h3 id="question"></h3>
+
+        <input type="text" name="answer" id="input-answer" autocomplete='off' size="30"
+            style="display:inline-block;" onKeypress="javascript:if(event.keyCode==13){Input()}">
+
+        <button id='skip' name="skip" style="display:inline-block;" onclick="Skip();">SKIP</button>
+        <button name="hint" style="display:inline-block;" onclick="Hint();">HINT</button>
     </body>
 </html>

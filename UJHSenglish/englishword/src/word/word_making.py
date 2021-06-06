@@ -72,7 +72,7 @@ def Making(Pt):
                 break
         for k in range(n):
             if K[k]==i:
-                K[k]=i+"\n"+E[k][:t]
+                #K[k]=i+"\n"+E[k][:t]
                 K_E[K[k]]=E[k]
     K_list=dict()
     for i in range(len(K)):
