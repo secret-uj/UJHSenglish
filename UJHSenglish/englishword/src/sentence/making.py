@@ -14,7 +14,6 @@ def F(Li,deep,S):
             F(Li,deep+1,s)
 def Making(Pt, E):
     global ReL
-    print(E)
     L=list(E.split())
     Li=[]
     for li in L:
@@ -43,8 +42,6 @@ def Making(Pt, E):
     F(Li,0,str())
     Rl=list(ReL)
     ReL=[]
-    print(ReL)
-    print(Rl)
     init_path=os.path.dirname(__file__)
     if int(Pt)<10:
         src="PartⅠ 0"+Pt+".docx"
@@ -52,6 +49,7 @@ def Making(Pt, E):
         src="PartⅠ "+Pt+".docx"
     path = os.path.join(init_path, src)
     doc = docx.Document(path)
+    n=0
     for sentence in doc.paragraphs:
         T=False
         for R in Rl:
@@ -59,13 +57,22 @@ def Making(Pt, E):
             while True:
                 if i+len(R) >= len(sentence.text):
                     break
-                if sentence.text[i:i+len(R)] == R and (i+len(R)+1 == len(sentence.text) or sentence.text[i+len(R)] == ' '):
-                    St = sentence.text[:i+1]+'__________'+sentence.text[i+len(R):]
+                if sentence.text[i:i+len(R)] == R and (i+len(R)+1 == len(sentence.text) or sentence.text[i+len(R)] in [' ', ',', ';']):
+                    St = sentence.text[:i+1]+'__________'+sentence.text[i+len(R):]+'\n'
+                    init_path=os.path.dirname(__file__)
+                    if int(Pt)<10:
+                        src="PartⅠ 0"+Pt+" 해석.docx"
+                    else:
+                        src="PartⅠ "+Pt+" 해석.docx"
+                    path = os.path.join(init_path, src)
+                    doc_K = docx.Document(path)
+                    St += doc_K.paragraphs[n].text
                     As = R
                     T=True
                     break
                 i+=1
         if T==True:
-            print(St,As)
             return St, As
+        n+=1
+    print(Rl)
     return None, None

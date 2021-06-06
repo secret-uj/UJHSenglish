@@ -24,7 +24,7 @@ Content={
     'estimation': "False",
     "score": str(),
     'state': str(),
-    'skip_message': str(),
+    'message': str(),
     "hint": str(),
     }
 def Select_Q_A():
@@ -36,8 +36,10 @@ def Select_Q_A():
         while True:
             (Question, Answer) = Sentence_Making(pt, K_E[K[0]])
             if Question!=None:
+                Content['hint']=Answer[0]
                 break
             else:
+                print(K_E[K[0]])
                 del K[0]
                 Score[1]-=1
                 if K==list():
@@ -48,8 +50,9 @@ def Select_Q_A():
 
 def index(request):
     global K, K_E, T, E, Score, Content
-    print(Content)
-    return render(request, 'englishword/index.html', Content)
+    content=dict(Content)
+    Content['request']=str()
+    return render(request, 'englishword/index.html', content)
 
 def select(request):
     global Question, Answer, K, K_E, Score, Content,pt,tp
@@ -60,7 +63,6 @@ def select(request):
     Content['lng']=ln
     tp = request.POST['type']
     Content['type']=tp
-    print("hello",pt,ln,tp)
     (K,K_E)=Word_Making(pt)
     Score=[0,len(K)]
     Content['state']="test"
@@ -73,12 +75,12 @@ def input(request):
     global Question, Answer, K, K_E, T, E, Score, Content, pt, tp
     Content['request']='input'
     A = request.POST['answer']
-    if A == "SKIP":
+    if A == '':
+        return left_len()
+    if A == "SKIP" or A == "S":
         return HttpResponseRedirect(reverse('skip'))
-    elif A == "HINT":
+    elif A == "HINT" or A == "H":
         return HttpResponseRedirect(reverse('hint'))
-    print(K_E[K[0]])
-    print(A)
     if A == Answer:
         T="True"
         Score[0]+=1
@@ -96,10 +98,16 @@ def input(request):
     Content['trueorfalse']=T
     return HttpResponseRedirect(reverse('index'))
 
+def left_len():
+    global Content, K
+    Content['request']='left_len'
+    Content['message']="%s개 남았습니다." % len(K)
+    return HttpResponseRedirect(reverse('index'))
+
 def skip(request):
-    global Question, Answer
+    global Question, Answer, Content
     Content['request']='skip'
-    Content['skip_message']=Answer
+    Content['message']=Answer
     T="False"
     del K[0]
     Content['hint']=str()

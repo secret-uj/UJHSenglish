@@ -7,7 +7,9 @@
                 document.getElementById("type_"+"{{type}}").selected = true;
 
 
-                document.getElementById("input-answer").focus();
+                var ipt_a = document.getElementById("input-answer");
+                ipt_a.focus();
+                ipt_a.placeholder="{{hint}}";
 
                 if ("{{request}}" == "input"){
                     if ("{{trueorfalse}}"=="True"){
@@ -18,8 +20,12 @@
                     }
                 }
 
+                if ("{{request}}" == "left_len"){
+                    alert("{{message}}");
+                }
+
                 if ("{{request}}" == "skip"){
-                    alert("{{skip_message}}");
+                    alert("{{message}}");
                 }
                 
                 if ("{{request}}" == "hint"){
@@ -44,6 +50,7 @@
                 <option id="part_10" value="10">PartⅠ10</option>
                 <option id="part_11" value="11">PartⅠ11</option>
                 <option id="part_12" value="12">PartⅠ12</option>
+                <option id="part_13" value="13">PartⅠ13</option>
             </select>
             <select name="lng" id="select-lng" style="width:100px; text-align-last: center;">
                 <option id="lng_ENGLISH" value="ENGLISH">영어</option>
@@ -56,7 +63,7 @@
             </select>
             <button >Enter</button> <br><br>
         </form>
-        <h3>{{ question }}</h3>
+        <h3>{{ question|linebreaks }}</h3>
         <form action="./input/" method="POST"  onsubmit="e='true';" style="display:inline-block;">{% csrf_token %}
             <input type="text" name="answer" id="input-answer" autocomplete='off' size="30" style="display:inline-block;">
         </form>
