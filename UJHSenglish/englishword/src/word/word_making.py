@@ -9,7 +9,7 @@ def Making(Pt):
     else:
         src="PartⅠ "+Pt+".txt"
     path = os.path.join(init_path, src)
-    with open(path, 'r', encoding='UTF8') as f:
+    with open(path, 'r') as f:
         while True:
             F=f.readline()
             if F==str():

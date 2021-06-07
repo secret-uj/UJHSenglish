@@ -82,22 +82,22 @@ def Making(Pt, E):
         n+=1
     print("babo",Rl)
     return None, None
-num = 4
-(K,K_E)=word_making.Making(str(num))
-if num<10:
-    src='./PartⅠ 0'+str(num)+'.txt'
-else:
-    src='./PartⅠ '+str(num)+'.txt'
-f=open(src,'w', encoding="UTF-8")
-for k in K:
-    (Q,A)=Making(str(num), K_E[k])
-    if Q!=None:
-        f.write(K_E[k])
-        f.write('\n')
-        f.write(A)
-        f.write('\n')
-        f.write(Q)
-        f.write('\n')
-f.close()
-    
-    
+for num in [12]:
+    (K,K_E)=word_making.Making(str(num))
+    if num<10:
+        src='./PartⅠ 0'+str(num)+'.txt'
+    else:
+        src='./PartⅠ '+str(num)+'.txt'
+    f=open(src,'w', encoding="UTF-8")
+    for k in K:
+        (Q,A)=Making(str(num), K_E[k])
+        if Q!=None:
+            f.write(K_E[k])
+            f.write('\n')
+            f.write(A)
+            f.write('\n')
+            f.write(Q)
+            f.write('\n')
+    f.close()
+        
+        

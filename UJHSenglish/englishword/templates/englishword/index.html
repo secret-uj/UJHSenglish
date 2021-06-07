@@ -48,9 +48,19 @@
                     }
                     else if (type=="sentence"){
                         if (type_ans=="subjective"){
-                            question = E_S[K_E[K[0]]][1]+'<br>'+E_S[K_E[K[0]]][2]
-                            answer = E_S[K_E[K[0]]][0]
-                            document.getElementById("question").innerHTML=question;
+                            while (true){
+                                if (Object.keys(E_S).includes(K_E[K[0]])){
+                                    question = E_S[K_E[K[0]]][1]+'<br>'+E_S[K_E[K[0]]][2]
+                                    answer = E_S[K_E[K[0]]][0]
+                                    document.getElementById("question").innerHTML=question;
+                                    break
+                                }
+                                init_score-=1
+                                K.shift();
+                                if (K.length==0){
+                                    return Complete()
+                                }
+                            }
                         }
                     }
                 }
@@ -67,16 +77,28 @@
                             answer = K_E[K[0]]
                             document.getElementById("question").innerHTML=question;
                             document.getElementById("input-answer").value='';
+                            document.getElementById("input-answer").placeholder='';
                             console.log(K_E[K[0]]);
                         }
                     }
                     else if (type=="sentence"){
                         if (type_ans=="subjective"){
-                            question = E_S[K_E[K[0]]][1]+'<br>'+E_S[K_E[K[0]]][2]
-                            answer = E_S[K_E[K[0]]][0]
-                            document.getElementById("question").innerHTML=question;
-                            document.getElementById("input-answer").value='';
-                            console.log(K_E[K[0]]);
+                            while (true){
+                                if (Object.keys(E_S).includes(K_E[K[0]])){
+                                    question = E_S[K_E[K[0]]][1]+'<br>'+E_S[K_E[K[0]]][2]
+                                    answer = E_S[K_E[K[0]]][0]
+                                    document.getElementById("question").innerHTML=question;
+                                    document.getElementById("input-answer").value='';
+                                    document.getElementById("input-answer").placeholder='';
+                                    break
+                                }
+                                init_score -= 1
+                                console.log('next')
+                                K.shift();
+                                if (K.length==0){
+                                    return Complete()
+                                }
+                            }
                         }
                     }
                 }
@@ -129,13 +151,15 @@
                 <option id="part_4" value="4">PartⅠ04</option>
                 <option id="part_5" value="5">PartⅠ05</option>
                 <option id="part_6" value="6">PartⅠ06</option>
-                <option id="part_7" value="7" disabled>PartⅠ07</option>
+                <option id="part_7" value="7">PartⅠ07</option>
                 <option id="part_8" value="8">PartⅠ08</option>
                 <option id="part_9" value="9">PartⅠ09</option>
                 <option id="part_10" value="10">PartⅠ10</option>
                 <option id="part_11" value="11">PartⅠ11</option>
                 <option id="part_12" value="12">PartⅠ12</option>
                 <option id="part_13" value="13">PartⅠ13</option>
+                <option id="part_18" value="18">PartⅠ18</option>
+                <option id="part_19" value="19">PartⅠ19</option>
             </select>
             <select name="lng" id="select-lng" style="width:100px; text-align-last: center;">
                 <option id="lng_ENGLISH" value="ENGLISH">영어</option>
